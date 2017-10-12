@@ -6,12 +6,19 @@ class Api::V1::TutorsController < ApplicationController
   end
 
   def new
+
   end
 
   def create
+    @tutor = Tutor.new(tutor_params)
+    if @tutor.save
+      render json: { tutor: @tutor }
+    end
   end
 
   def show
+    @tutor = Tutor.find(tutor_params[:id])
+    render json: @tutor
   end
 
   def destroy
@@ -22,8 +29,8 @@ class Api::V1::TutorsController < ApplicationController
 
   private
 
-  def student_params
-    params.permit(:first_name, :last_name, :username, :email, :location_id)
+  def tutor_params
+    params.permit(:id, :first_name, :last_name, :username, :email, :location_id)
 
   end
 end

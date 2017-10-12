@@ -10,13 +10,16 @@ class Api::V1::StudentsController < ApplicationController
   end
 
   def create
+    # byebug
     @student = Student.new(student_params)
     if @student.save
-      render json: { student: @student}
+      render json: @student
     end
   end
 
   def show
+    @student = Student.find(student_params[:id])
+    render json: @student
   end
 
   def destroy
@@ -28,7 +31,7 @@ class Api::V1::StudentsController < ApplicationController
   private
 
   def student_params
-    params.permit(:first_name, :last_name, :username, :email, :location_id)
+    params.require(:student).permit(:first_name, :last_name, :username, :email, :password, :location_id)
   end
 
 end

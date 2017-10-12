@@ -14,22 +14,21 @@ locations = Location.create(
   ]
 )
 
-students = Student.create(
-  [
-    {first_name: "Gianpaul", last_name: "Rachiele", username: "gianpaul817", email: "gianpaul817@gmail.com", location_id: 1},
-    {first_name: "James", last_name: "Miele", username: "james1", email: "james@email.com", location_id: 1},
-    {first_name: "Roman", last_name: "Mullady", username: "roman1", email: "roman@email.com", location_id: 3}
-  ]
-)
+# students = Student.create(
+#   [
+#     {first_name: "Gianpaul", last_name: "Rachiele", username: "gianpaul817", email: "gianpaul817@gmail.com", location_id: 1},
+#     {first_name: "James", last_name: "Miele", username: "james1", email: "james@email.com", location_id: 1},
+#     {first_name: "Roman", last_name: "Mullady", username: "roman1", email: "roman@email.com", location_id: 3}
+#   ]
+# )
 
-tutors = Tutor.create(
-  [
-    {first_name: "Gabi", last_name: "D", username: "gabid", email: "gabi@email.com", location_id: 1},
-    {first_name: "Tim", last_name: "Freeman", username: "timfreeman", email: "tim@email.com", location_id: 1},
-    {first_name: "Joe", last_name: "Cha", username: "joecha", email: "joe@email.com", location_id: 3}
-  ]
-)
-
+# tutors = Tutor.create(
+#   [
+#     {first_name: "Gabi", last_name: "D", username: "gabid", email: "gabi@email.com", location_id: 1},
+#     {first_name: "Tim", last_name: "Freeman", username: "timfreeman", email: "tim@email.com", location_id: 1},
+#     {first_name: "Joe", last_name: "Cha", username: "joecha", email: "joe@email.com", location_id: 3}
+#   ]
+# )
 
 subjects = Subject.create(
   [
@@ -37,5 +36,41 @@ subjects = Subject.create(
     {name: "Physics"},
     {name: "Biology"},
     {name: "Spanish"},
+    {name: "Italian"},
+    {name: "Earth Science"},
+    {name: "Chemisty"},
+    {name: "Trigonometry"},
+    {name: "Algebra"},
+    {name: "Pre Calc"},
+    {name: "Statistics"},
+    {name: "Calculus"},
+    {name: "English"},
+    {name: "Creative Writing"},
+    {name: "Philosophy"},
+    {name: "Economics"},
+    {name: "Finance"},
+    {name: "Marketing"},
+    {name: "Sales"},
+    {name: "Sociology"},
+    {name: "Socioeconomics"},
+    {name: "Organic Chemistry"}
   ]
 )
+
+
+# studentstutors = Studentstutor.create([
+#   {tutor_id: 1, student_id: 1},
+#   {tutor_id: 1 , student_id: 2},
+#   {tutor_id: 2, student_id: 3},
+#   {tutor_id: 3, student_id: 2}
+#   ])
+#
+#   tutorssubjects = Tutorssubject.create([
+#     {tutor_id: 1, subject_id: 1},
+#     {tutor_id: 2, subject_id: 1},
+#     {tutor_id: 3, subject_id: 1},
+#     {tutor_id: 3, subject_id: 2},
+#     {tutor_id: 3, subject_id: 3},
+#     {tutor_id: 1, subject_id: 4},
+#     {tutor_id: 2, subject_id: 4}
+#     ])
