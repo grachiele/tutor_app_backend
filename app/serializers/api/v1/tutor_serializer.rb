@@ -1,5 +1,5 @@
 class Api::V1::TutorSerializer < ActiveModel::Serializer
-  attributes :id, :first_name, :last_name, :username, :email, :password_digest
+  attributes :id, :first_name, :last_name, :username, :email
 
   belongs_to :location
   has_many :students
