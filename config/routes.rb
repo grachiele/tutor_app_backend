@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :student_sessions, only: [:create, :destroy]
+      resources :tutor_sessions, only: [:create, :destroy]
       resources :students, :tutors, :locations, :subjects
     end
   end

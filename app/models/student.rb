@@ -1,4 +1,6 @@
 class Student < ApplicationRecord
+  
+  validates :email, uniqueness: true
   has_secure_password
 
   belongs_to :location
