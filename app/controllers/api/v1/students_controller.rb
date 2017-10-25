@@ -18,14 +18,8 @@ class Api::V1::StudentsController < ApplicationController
       params[:subjects].each do |x|
         Studentssubject.create(student_id: @student.id, subject_id: x)
       end
-      everything = Subject.all.dup
-      everything.each do |subject|
-        if @student.subjects.include?(subject)
-          subject[:checked] = true
-        end
-      end
       token = encode_token( { student_id: @student.id })
-      render json: { student: { first_name: @student.first_name, last_name: @student.last_name, username: @student.username, email: @student.email, location: @student.location, subjects: @student.subjects, tutors: @student.tutors.map { |tutor| {id: tutor.id, first_name: tutor.first_name, last_name: tutor.last_name, subjects: tutor.subjects, email: tutor.email }  }, not_selected_tutors: Tutor.all.select{ |tutor| !@student.tutors.include?(tutor)}.map{ |tutor| {id: tutor.id, email: tutor.email, first_name: tutor.first_name, last_name: tutor.last_name, subjects: tutor.subjects, subject_names: tutor.subjects.map{|subject| subject.name.downcase} }}, all_subjects: everything, not_selected_tutors: Tutor.all.select{ |tutor| !@student.tutors.include?(tutor)}.map{ |tutor| {id: tutor.id, email: tutor.email, first_name: tutor.first_name, last_name: tutor.last_name, subjects: tutor.subjects, subject_names: tutor.subjects.map{|subject| subject.name.downcase} }} }, jwt_token: token }
+      render json: { student: { first_name: @student.first_name, last_name: @student.last_name, username: @student.username, email: @student.email, location: @student.location, subjects: @student.subjects, tutors: @student.tutors.map { |tutor| {id: tutor.id, first_name: tutor.first_name, last_name: tutor.last_name, subjects: tutor.subjects, email: tutor.email }  }, not_selected_tutors: Tutor.all.select{ |tutor| !@student.tutors.include?(tutor)}.map{ |tutor| {id: tutor.id, email: tutor.email, first_name: tutor.first_name, last_name: tutor.last_name, subjects: tutor.subjects, subject_names: tutor.subjects.map{|subject| subject.name.downcase} }}, not_selected_tutors: Tutor.all.select{ |tutor| !@student.tutors.include?(tutor)}.map{ |tutor| {id: tutor.id, email: tutor.email, first_name: tutor.first_name, last_name: tutor.last_name, subjects: tutor.subjects, subject_names: tutor.subjects.map{|subject| subject.name.downcase} }} }, jwt_token: token }
     else
       render json: @student.errors
     end
