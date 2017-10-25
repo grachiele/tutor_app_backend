@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20171009200456) do
     t.string "last_name"
     t.string "username"
     t.string "email"
+    t.string "password_digest"
     t.integer "location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(version: 20171009200456) do
     t.string "last_name"
     t.string "username"
     t.string "email"
+    t.string "password_digest"
     t.integer "location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
