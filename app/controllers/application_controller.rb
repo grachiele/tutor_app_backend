@@ -56,7 +56,7 @@ class ApplicationController < ActionController::API
   end
 
   def authorized
-    redirect_to "/" unless logged_in?
+    redirect_to "/" unless logged_in_student? || logged_in_tutor?
   end
 
 end
