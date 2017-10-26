@@ -6,57 +6,53 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-locations = Location.create(
-  [
-    {city: "Bronx", country: "US", state: "NY", zipcode: 10465},
-    {city: "Brooklyn", country: "US", state: "NY", zipcode: 11512},
-    {city: "New York", country: "US", state: "NY", zipcode: 10021}
-  ]
-)
-
-# students = Student.create(
+# location_path = "/Users/gianpaulrachiele/Desktop/us_postal_codes.csv"
+#
+# location_file = File.open(location_path, "r")
+#
+# location_file.each_line { |line|
+#   fields= line.split(',')
+#
+#   Location.create({city: fields[1], country: "US", state: fields[3], zipcode: fields[0]})
+# }
+#
+#
+# subjects = Subject.create(
 #   [
-#     {first_name: "Gianpaul", last_name: "Rachiele", username: "gianpaul817", email: "gianpaul817@gmail.com", location_id: 1},
-#     {first_name: "James", last_name: "Miele", username: "james1", email: "james@email.com", location_id: 1},
-#     {first_name: "Roman", last_name: "Mullady", username: "roman1", email: "roman@email.com", location_id: 3}
+#     {name: "Math"},
+#     {name: "Physics"},
+#     {name: "Biology"},
+#     {name: "Spanish"},
+#     {name: "Italian"},
+#     {name: "Earth Science"},
+#     {name: "Chemisty"},
+#     {name: "Trigonometry"},
+#     {name: "Algebra"},
+#     {name: "Pre Calc"},
+#     {name: "Statistics"},
+#     {name: "Calculus"},
+#     {name: "English"},
+#     {name: "Creative Writing"},
+#     {name: "Philosophy"},
+#     {name: "Economics"},
+#     {name: "Finance"},
+#     {name: "Marketing"},
+#     {name: "Sales"},
+#     {name: "Sociology"},
+#     {name: "Socioeconomics"},
+#     {name: "Organic Chemistry"}
 #   ]
 # )
-
-# tutors = Tutor.create(
-#   [
-#     {first_name: "Gabi", last_name: "D", username: "gabid", email: "gabi@email.com", location_id: 1},
-#     {first_name: "Tim", last_name: "Freeman", username: "timfreeman", email: "tim@email.com", location_id: 1},
-#     {first_name: "Joe", last_name: "Cha", username: "joecha", email: "joe@email.com", location_id: 3}
-#   ]
-# )
-
-subjects = Subject.create(
-  [
-    {name: "Math"},
-    {name: "Physics"},
-    {name: "Biology"},
-    {name: "Spanish"},
-    {name: "Italian"},
-    {name: "Earth Science"},
-    {name: "Chemisty"},
-    {name: "Trigonometry"},
-    {name: "Algebra"},
-    {name: "Pre Calc"},
-    {name: "Statistics"},
-    {name: "Calculus"},
-    {name: "English"},
-    {name: "Creative Writing"},
-    {name: "Philosophy"},
-    {name: "Economics"},
-    {name: "Finance"},
-    {name: "Marketing"},
-    {name: "Sales"},
-    {name: "Sociology"},
-    {name: "Socioeconomics"},
-    {name: "Organic Chemistry"}
-  ]
-)
-
+#
+# subject_path = "/Users/gianpaulrachiele/Desktop/majors-list.csv"
+#
+# subject_file = File.open(subject_path, "r")
+#
+# subject_file.each_line { |line|
+#   fields= line.split(',')
+#
+#   Subject.create({name: fields[1].titleize})
+# }
 
 # studentstutors = Studentstutor.create([
 #   {tutor_id: 1, student_id: 1},
@@ -74,3 +70,13 @@ subjects = Subject.create(
 #     {tutor_id: 1, subject_id: 4},
 #     {tutor_id: 2, subject_id: 4}
 #     ])
+
+30.times do
+  Student.create({first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "#{Faker::Crypto.md5}", location_id: "#{Faker::Address.zip}"})
+  Tutor.create({first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "#{Faker::Crypto.md5}", location_id: "#{Faker::Address.zip}"})
+end
+
+60.times do
+  Tutorssubject.create({tutor_id: Faker::Number.between(1, Tutor.all.size), subject_id: Faker::Number.between(1, Subject.all.size)})
+  Studentssubject.create({student_id: Faker::Number.between(1, Student.all.size), subject_id: Faker::Number.between(1, Subject.all.size)})
+end
