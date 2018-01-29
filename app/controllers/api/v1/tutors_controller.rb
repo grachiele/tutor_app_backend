@@ -16,6 +16,7 @@ class Api::V1::TutorsController < ApplicationController
     @location = Location.find_by(zipcode: tutor_params[:location_id])
     @tutor = Tutor.new(first_name: tutor_params[:first_name], last_name: tutor_params[:last_name], username: tutor_params[:username], email: tutor_params[:email], password: tutor_params[:password], location_id: @location.id)
     if @tutor.save
+
       params[:subjects].each do |x|
         Tutorssubject.create(tutor_id: @tutor.id, subject_id: x)
       end
