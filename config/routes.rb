@@ -14,6 +14,9 @@ Rails.application.routes.draw do
       resources :student_sessions, only: [:create, :destroy]
       resources :tutor_sessions, only: [:create, :destroy]
       resources :students, :tutors, :locations, :subjects
+      resources :conversations do
+        resources :messages
+       end
     end
   end
 
